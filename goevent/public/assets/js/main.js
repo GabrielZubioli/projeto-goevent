@@ -1,26 +1,20 @@
-/*===== LOGIN SHOW and HIDDEN =====*/
-const signUp = document.getElementById('sign-up'),
-    signIn = document.getElementById('sign-in'),
-    loginIn = document.getElementById('login-in'),
-    loginUp = document.getElementById('login-up')
+const signUp = document.getElementById("sign-up"),
+    signIn = document.getElementById("sign-in"),
+    loginIn = document.getElementById("login-in"),
+    loginUp = document.getElementById("login-up");
 
+if (signUp && signIn) {
+    signUp.addEventListener("click", () => {
+        loginIn.classList.remove("block");
+        loginUp.classList.remove("none");
+        loginIn.classList.toggle("none");
+        loginUp.classList.toggle("block");
+    });
 
-signUp.addEventListener('click', ()=>{
-    // Remove classes first if they exist
-    loginIn.classList.remove('block')
-    loginUp.classList.remove('none')
-
-    // Add classes
-    loginIn.classList.toggle('none')
-    loginUp.classList.toggle('block')
-})
-
-signIn.addEventListener('click', ()=>{
-    // Remove classes first if they exist
-    loginIn.classList.remove('none')
-    loginUp.classList.remove('block')
-
-    // Add classes
-    loginIn.classList.toggle('block')
-    loginUp.classList.toggle('none')
-})
+    signIn.addEventListener("click", () => {
+        loginIn.classList.remove("none");
+        loginUp.classList.remove("block");
+        loginIn.classList.toggle("block");
+        loginUp.classList.toggle("none");
+    });
+}
