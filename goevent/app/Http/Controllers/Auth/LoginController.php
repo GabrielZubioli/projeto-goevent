@@ -9,17 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 public function showLoginForm() {
-    return view('auth.login'); // login.blade.php
+    return view('auth.login');
 }
 
-public function store(Request $request) {
+public function store(Request $request)
+{
+    // Validação e tentativa de login
     $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        return redirect()->intended('/home');
+    if (auth()->attempt($credentials)) {
+        return redirect()->route('home');
     }
 
-    return back()->withErrors(['email' => 'Credenciais inválidas'])->withInput();
+    return back()->withErrors(['email' => 'Credenciais inválidas']);
 }
 
 }
