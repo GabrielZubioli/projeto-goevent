@@ -1,15 +1,21 @@
-/*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 
-/*===== VARIABLES CSS =====*/
 :root {
-    /*===== Colores =====*/
-    --first-color: #9d4bff;
-    --first-color-dark: #23004d;
-    --first-color-light: #a49eac;
-    --first-color-lighten: #f2f2f2;
+    --color-primary: #9d4bff;
+    --color-primary-light: #7aa2ff;
+    --color-primary-alt: #9966ff;
 
-    /*===== Font and typography =====*/
+    --color-bg: #0f1115;
+    --color-bg-alt: #151922;
+    --color-surface: #20232b;
+
+    --color-text: #e7eaf0;
+    --color-text-muted: #a7adbb;
+
+    --color-border: #2a3040;
+}
+
+:root {
     --body-font: "Open Sans", sans-serif;
     --h1-font-size: 1.5rem;
     --normal-font-size: 0.938rem;
@@ -23,7 +29,6 @@
     }
 }
 
-/*===== BASE =====*/
 *,
 ::before,
 ::after {
@@ -31,11 +36,18 @@
 }
 
 body {
+    background: radial-gradient(
+            1200px 800px at 20% -10%,
+            #171b25 0%,
+            transparent 60%
+        ),
+        radial-gradient(1000px 600px at 100% 0%, #141826 0%, transparent 55%),
+        var(--color-bg);
     margin: 0;
     padding: 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    color: var(--first-color-dark);
+    color: var(--color-text);
 }
 
 h1 {
@@ -51,8 +63,10 @@ img {
     height: auto;
     display: block;
 }
+.logo-img {
+    transform: scale(0.9);
+}
 
-/*===== LOGIN =====*/
 .login {
     display: grid;
     grid-template-columns: 100%;
@@ -66,12 +80,23 @@ img {
 }
 
 .login__img {
+    display: flex;
+    flex-direction: column;
     justify-self: center;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
 }
 
 .login__img img {
-    width: 310px;
-    margin-top: 1.5rem;
+    max-width: 390px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: contain;
+    display: block;
+    padding: 1rem;
+    padding-top: 3rem;
 }
 
 .login__forms {
@@ -84,13 +109,15 @@ img {
     position: absolute;
     bottom: 1rem;
     width: 100%;
-    background-color: var(--first-color-lighten);
+    background-color: var(--color-bg-alt);
     padding: 2rem 1rem;
     border-radius: 1rem;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+    box-shadow: 0 8px 20px var(--color-bg);
     animation-duration: 0.4s;
     animation-name: animate-login;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
 }
 
 @keyframes animate-login {
@@ -108,35 +135,48 @@ img {
 .login__title {
     font-size: var(--h1-font-size);
     margin-bottom: 2rem;
+    color: var(--color-primary);
 }
 
 .login__box {
+    border: 1px solid var(--color-border);
     display: grid;
     grid-template-columns: max-content 1fr;
     column-gap: 0.5rem;
     padding: 1.125rem 1rem;
-    background-color: #fff;
+    background-color: var(--color-surface);
     margin-top: 1rem;
     border-radius: 0.5rem;
 }
 
 .login__icon {
     font-size: 1.5rem;
-    color: var(--first-color);
+    color: var(--color-primary);
 }
 
 .login__input {
     border: none;
     outline: none;
     font-size: var(--normal-font-size);
-    font-weight: 700;
-    color: var(--first-color-dark);
+    font-weight: 600;
+    color: var(--color-text);
+    background-color: transparent;
+    width: 100%;
 }
 
 .login__input::placeholder {
     font-size: var(--normal-font-size);
     font-family: var(--body-font);
-    color: var(--first-color-light);
+    color: var(--color-text-muted);
+}
+
+.login__input:focus {
+    color: var(--color-text);
+}
+
+.login__box:focus-within {
+    border: 1px solid var(--color-primary-light);
+    box-shadow: 0 0 6px var(--color-primary-alt);
 }
 
 .login__forgot {
@@ -146,7 +186,7 @@ img {
     margin-top: 0.5rem;
     font-size: var(--small-font-size);
     font-weight: 600;
-    color: var(--first-color-light);
+    color: var(--color-primary-light);
 }
 
 .login__button {
@@ -154,7 +194,7 @@ img {
     display: block;
     padding: 1rem;
     margin: 2rem 0;
-    background-color: var(--first-color);
+    background-color: var(--color-primary);
     color: #fff;
     font-weight: 600;
     text-align: center;
@@ -163,7 +203,7 @@ img {
 }
 
 .login__button:hover {
-    background-color: var(--first-color-dark);
+    background-color: var(--color-primary-alt);
 }
 
 .login__account,
@@ -174,12 +214,12 @@ img {
 }
 
 .login__account {
-    color: var(--first-color-dark);
+    color: var(--color-text);
 }
 
 .login__signin,
 .login__signup {
-    color: var(--first-color);
+    color: var(--color-primary);
     cursor: pointer;
 }
 
@@ -189,21 +229,18 @@ img {
 
 .login__social-icon {
     font-size: 1.5rem;
-    color: var(--first-color-dark);
+    color: var(--color-text);
     margin: 0 1.5rem;
 }
 
-/*Show login*/
 .block {
     display: block;
 }
 
-/*Hidden login*/
 .none {
     display: none;
 }
 
-/* ===== MEDIA QUERIES =====*/
 @media screen and (min-width: 576px) {
     .login__forms {
         width: 348px;
@@ -228,7 +265,7 @@ img {
         display: flex;
         width: 600px;
         height: 588px;
-        background-color: var(--first-color-lighten);
+        background-color: var(--color-bg-alt);
         border-radius: 1rem;
         padding-left: 1rem;
     }
@@ -248,7 +285,7 @@ img {
     }
 
     .login__create {
-        bottom: -5.5rem;
+        bottom: -6.1rem;
     }
     .forgot-password {
         bottom: -3.5rem;
