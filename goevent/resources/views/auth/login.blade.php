@@ -7,18 +7,6 @@
     @csrf
     <h1 class="login__title">Login</h1>
 
-    @if(session('success'))
-        <p style="color:green">{{ session('success') }}</p>
-    @endif
-
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li style="color:red">{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-
     <div class="login__box">
         <i class='bx bx-user login__icon'></i>
         <input type="email" name="email" placeholder="Email" class="login__input" value="{{ old('email') }}">

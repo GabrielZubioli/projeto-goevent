@@ -15,7 +15,6 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        // 🔹 Valida os dados antes de tentar login
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required|string|min:6',
@@ -23,16 +22,13 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        // 🔹 Tentativa de login
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            // Regenera a sessão para evitar fixation attacks
             $request->session()->regenerate();
 
             return redirect()->route('events')
                 ->with('success', 'Login realizado com sucesso!');
         }
 
-        // 🔹 Se falhar
         return back()->withErrors([
             'email' => 'Credenciais inválidas.',
         ])->onlyInput('email');

@@ -21,7 +21,6 @@ export function initProfilePage() {
     closeEdit?.addEventListener("click", closeModal);
     cancelEdit?.addEventListener("click", closeModal);
 
-    // fecha se clicar fora
     modalEdit.addEventListener("mousedown", (e) => {
         if (e.target === modalEdit) {
             modalEdit.addEventListener("mouseup", function handler(ev) {

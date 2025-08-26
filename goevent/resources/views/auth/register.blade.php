@@ -3,6 +3,7 @@
 @section('title', 'Registro')
 
 @section('content')
+
 <form method="POST" action="{{ route('register.store') }}" class="login__create" id="login-up">
     @csrf
     <h1 class="login__title">Criar Conta</h1>
@@ -34,4 +35,5 @@
         <a href="{{ route('login') }}" class="login__signup">Entrar</a>
     </div>
 </form>
+
 @endsection

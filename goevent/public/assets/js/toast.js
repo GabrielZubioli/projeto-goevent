@@ -1,4 +1,3 @@
-// public/assets/js/toast.js
 export function showToast(message, type = "success") {
     const containerId = "toast-container";
     let container = document.getElementById(containerId);

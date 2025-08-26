@@ -21,7 +21,6 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Usuários interessados no evento
     public function interests()
     {
         return $this->belongsToMany(User::class, 'event_user_interests')->withTimestamps();

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class ForgotPasswordController extends Controller
 {
     public function showForgotForm() {
-        return view('auth.forgot-password'); // forgot-password.blade.php
+        return view('auth.forgot-password');
     }
 
     public function updatePassword(Request $request) {

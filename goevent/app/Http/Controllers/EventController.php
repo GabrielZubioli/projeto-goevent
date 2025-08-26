@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $userId = Auth::id();
@@ -19,7 +25,7 @@ class EventController extends Controller
                 'description'   => $event->description,
                 'image_url'     => $event->image ? asset('storage/' . $event->image) : null,
                 'user_id'       => $event->user_id,
-                'interested'    => $event->interests_count, // total de interessados
+                'interested'    => $event->interests_count,
                 'is_interested' => $userId ? $event->interests()->where('user_id', $userId)->exists() : false,
                 'created_at'    => $event->created_at,
             ];

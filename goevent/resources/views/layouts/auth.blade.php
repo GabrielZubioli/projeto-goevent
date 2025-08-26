@@ -25,6 +25,34 @@
         </div>
     </div>
 
+    
+    <div id="toast-container" class="toast-container"></div>
+
+
     @stack('scripts')
+
+    <script type="module">
+        import { showToast, showConfirm } from "{{ asset('assets/js/toast.js') }}";
+        window.showToast = showToast;
+        window.showConfirm = showConfirm;
+    </script>
+
+    <script type="module">
+    import { showToast } from "{{ asset('assets/js/toast.js') }}";
+
+    @if(session('success'))
+        showToast("{{ session('success') }}", "success");
+    @endif
+
+    @if(session('error'))
+        showToast("{{ session('error') }}", "error");
+    @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            showToast("{{ $error }}", "error");
+        @endforeach
+    @endif
+</script>
 </body>
 </html>
