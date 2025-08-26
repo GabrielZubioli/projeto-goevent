@@ -14,6 +14,16 @@ class Event extends Model
         'description',
         'image',
         'user_id',
-        'interested'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Usuários interessados no evento
+    public function interests()
+    {
+        return $this->belongsToMany(User::class, 'event_user_interests')->withTimestamps();
+    }
 }
