@@ -15,8 +15,14 @@ export function showToast(message, type = "success") {
 
     container.appendChild(toast);
 
-    toast.addEventListener("animationend", () => {
-        if (toast.style.animation.includes("fadeOut")) {
+    toast.style.animation = "fadeIn 0.5s forwards";
+
+    setTimeout(() => {
+        toast.style.animation = "fadeOut 0.5s forwards";
+    }, 3000);
+
+    toast.addEventListener("animationend", (e) => {
+        if (e.animationName === "fadeOut") {
             toast.remove();
         }
     });
