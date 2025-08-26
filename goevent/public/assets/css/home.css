@@ -1,12 +1,12 @@
 :root {
-    --bg: #0f1115; /* fundo principal */
-    --bg-2: #151922; /* superfícies */
-    --text: #e7eaf0; /* texto principal */
-    --muted: #a7adbb; /* texto secundário */
-    --stroke: #2a3040; /* bordas/cards */
-    --accent: #9d4bff; /* destaque/links */
-    --accent-2: #9d4bff; /* hover sutil */
-    --success: #33d69f; /* ação positiva */
+    --bg: #0f1115;
+    --bg-2: #151922;
+    --text: #e7eaf0;
+    --muted: #a7adbb;
+    --stroke: #2a3040;
+    --accent: #9d4bff;
+    --accent-2: #9d4bff;
+    --success: #33d69f;
 }
 
 * {
@@ -31,9 +31,17 @@ body {
         var(--bg);
     color: var(--text);
     letter-spacing: 0.1px;
+    -ms-overflow-style: none;
 }
 
-/* Header */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
 .container {
     width: min(1200px, 92%);
     margin: 0 auto;
@@ -103,14 +111,12 @@ header {
     transform: scale(1.1);
 }
 
-/* Hero / Title */
 .page-title {
     font-size: 48px;
     margin: 32px 0 16px;
     letter-spacing: 0.4px;
 }
 
-/* Controls */
 .controls {
     display: flex;
     gap: 12px;
@@ -138,7 +144,6 @@ header {
     font-size: 14px;
 }
 
-/* Grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -166,7 +171,6 @@ header {
     }
 }
 
-/* Card */
 .card {
     border: 1px solid var(--stroke);
     border-radius: 16px;
@@ -234,7 +238,6 @@ header {
     border-color: #55608a;
 }
 
-/* Footer */
 footer {
     border-top: 1px solid var(--stroke);
     padding: 24px 0;
@@ -246,7 +249,6 @@ footer {
     gap: 18px;
 }
 
-/* Modal Criar Evento */
 .modal {
     position: fixed;
     inset: 0;
@@ -354,3 +356,147 @@ footer {
     color: var(--muted);
 }
 
+.card-body {
+    position: relative;
+    z-index: auto;
+}
+
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.menu-btn {
+    font-size: 22px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #555;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    color: var(--muted);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 28px;
+    background: var(--bg-2);
+    min-width: 140px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 10;
+    border: 1px solid var(--stroke);
+}
+
+.dropdown-item {
+    width: 100%;
+    padding: 10px 14px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--stroke);
+}
+
+.dropdown-item.edit-btn {
+    color: #ffffff;
+}
+
+.dropdown-item.edit-btn:hover {
+    background: var(--stroke);
+}
+
+.dropdown-item.delete-btn {
+    color: #dc2626;
+}
+
+.dropdown-item.delete-btn:hover {
+    background: var(--stroke);
+}
+
+.dropdown.open .dropdown-content {
+    display: block;
+}
+
+.toast-container {
+  position: fixed;
+  top: 80px; 
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  min-width: 250px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.4s forwards, fadeOut 0.5s 3s forwards;
+}
+
+.toast.success {
+  background: #28a745;
+}
+
+.toast.error {
+  background: #dc3545;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9998;
+    pointer-events: auto;
+}
+
+.modal.open {
+    display: flex;
+}

@@ -241,6 +241,16 @@ img {
     display: none;
 }
 
+.login__input:-webkit-autofill,
+.login__input:-webkit-autofill:hover,
+.login__input:-webkit-autofill:focus,
+.login__input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset !important;
+    -webkit-text-fill-color: var(--color-text) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
 @media screen and (min-width: 576px) {
     .login__forms {
         width: 348px;
