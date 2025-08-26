@@ -43,20 +43,24 @@ port=3306
 port=3308
 ```
 ---
+### 1. Criar o banco de dados
+```sql
+CREATE DATABASE goevent;
+```
 
-### 1. Clonar o repositório
+### 2. Clonar o repositório
 ```bash
 git clone https://github.com/GabrielZubioli/projeto-goevent.git
 cd goevent
 ```
 
-### 2.Instalar dependências
+### 3.Instalar dependências
 ```bash
 composer install
 npm install && npm run dev
 ```
 
-### 3.Configurar o .env
+### 4.Configurar o .env
 ```bash
 APP_NAME=Goevent
 APP_ENV=local
@@ -75,17 +79,13 @@ DB_PASSWORD=
 ```bash
 php artisan key:generate
 ```
-### 4.Rodar as migrations
+### 5.Rodar as migrations
 ```bash
 php artisan migrate
 ```
-### 5.Iniciar o servidor
+### 6.Iniciar o servidor
 ```bash
 php artisan serve
-```
-### O projeto estará rodando em:
-```bash
-http://127.0.0.1:8000
 ```
 
 ## 📌 Rotas do Projeto
