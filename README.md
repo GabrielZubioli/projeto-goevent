@@ -60,7 +60,7 @@ composer install
 npm install && npm run dev
 ```
 
-### 4.Configurar o .env
+### 4.Criar e Configurar o .env
 ```bash
 APP_NAME=Goevent
 APP_ENV=local
